@@ -1,6 +1,7 @@
 'use client';
 
-import { GameState, MilestoneId } from '@/types/game';
+import { GameState, MilestoneId, CharacterLevel } from '@/types/game';
+import { getCharacterLevelFromMilestones } from '@/data/characters';
 
 const STORAGE_KEY = 'hanh-trinh-doc-lap-game-state';
 
@@ -13,7 +14,11 @@ export const DEFAULT_GAME_STATE: GameState = {
   totalPlayTime: 0,
   achievements: [],
   lastPlayed: new Date().toISOString(),
-  isFirstTime: true
+  isFirstTime: true,
+  characterProgress: {
+    currentLevel: 0,
+    unlockedLevels: [0]
+  }
 };
 
 // Load game state from localStorage
@@ -85,6 +90,17 @@ export function completeMilestone(
     newState.currentMilestoneId = milestoneOrder[currentIndex + 1];
   }
 
+  // Update character progress based on completed milestones
+  const newCharacterLevel = getCharacterLevelFromMilestones(newState.completedMilestones.length);
+  const unlockedLevels = Array.from(
+    new Set([...newState.characterProgress.unlockedLevels, newCharacterLevel])
+  ).sort((a, b) => a - b) as CharacterLevel[];
+
+  newState.characterProgress = {
+    currentLevel: newCharacterLevel,
+    unlockedLevels
+  };
+
   // Check for achievements
   newState.achievements = checkAchievements(newState);
 
@@ -97,6 +113,18 @@ export function resetGameState(): GameState {
   const newState = { ...DEFAULT_GAME_STATE, isFirstTime: false };
   saveGameState(newState);
   return newState;
+}
+
+// Clear game state completely (remove from localStorage)
+export function clearGameState(): void {
+  if (typeof window === 'undefined') {
+    return;
+  }
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (error) {
+    console.error('Error clearing game state:', error);
+  }
 }
 
 // Check and award achievements

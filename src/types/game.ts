@@ -1,8 +1,8 @@
 // Game Types for "Hành Trình Độc Lập"
 
-export type MilestoneId = '1930' | '1940' | '1941' | '1945-8' | '1945-9';
+export type MilestoneId = '1930' | '1940' | '1941' | '1945-8' | '1945-9' | '1954';
 
-export type GameType = 'quiz' | 'image-match' | 'timeline-sort' | 'memory' | 'fill-blank';
+export type GameType = 'quiz' | 'image-match' | 'timeline-sort' | 'memory' | 'fill-blank' | 'wheel-fortune' | 'image-quiz';
 
 // Quiz game types
 export interface QuizQuestion {
@@ -17,6 +17,15 @@ export interface ImagePair {
   imageUrl: string;
   text: string;
   id: string;
+}
+
+// Image Quiz game types (đuổi hình bắt chữ)
+export interface ImageQuizQuestion {
+  imageUrl: string; // Path to historical image
+  question: string; // Question about the image
+  options: string[]; // 4 answer options
+  correctAnswer: number; // index of correct option (0-3)
+  explanation?: string;
 }
 
 // Timeline Sort game types
@@ -40,6 +49,22 @@ export interface FillBlank {
   wordBank: string[]; // available words to choose from
 }
 
+// Wheel of Fortune game types
+export interface WheelFortunePuzzle {
+  phrase: string; // The phrase/sentence to guess (Vietnamese)
+  category: string; // Category hint (e.g., "Khẩu hiệu", "Sự kiện lịch sử")
+  hint?: string; // Optional additional hint
+}
+
+// Hint system for Wheel of Fortune
+export interface HintOption {
+  id: string;
+  name: string;
+  description: string;
+  cost: number; // Cost in points
+  icon: string;
+}
+
 // Main Milestone interface
 export interface Milestone {
   id: MilestoneId;
@@ -59,6 +84,8 @@ export interface Milestone {
   timeline?: TimelineEvent[];
   cards?: MemoryCard[];
   fillBlanks?: FillBlank;
+  wheelFortune?: WheelFortunePuzzle;
+  imageQuiz?: ImageQuizQuestion[];
 
   // Historical information
   infoTitle: string;
@@ -80,6 +107,7 @@ export interface GameState {
   achievements: string[];
   lastPlayed: string; // ISO date string
   isFirstTime: boolean;
+  characterProgress: CharacterProgress; // Character evolution tracking
 }
 
 // Achievement types
@@ -97,4 +125,22 @@ export interface GameSession {
   startTime: number;
   currentScore: number;
   attempts: number;
+}
+
+// Character Evolution System
+export type CharacterLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+
+export interface CharacterStage {
+  level: CharacterLevel;
+  title: string;
+  description: string;
+  icon: string;
+  imageUrl: string; // Path to character image in public folder
+  milestone: MilestoneId | 'start' | 'complete';
+  color: string; // Theme color for this stage
+}
+
+export interface CharacterProgress {
+  currentLevel: CharacterLevel;
+  unlockedLevels: CharacterLevel[];
 }

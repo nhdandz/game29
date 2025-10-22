@@ -9,7 +9,10 @@
       "Bash(mkdir srclib)",
       "Bash(mkdir srccomponents)",
       "Bash(timeout 10 bash -c \"while ! curl -s http://localhost:3000 > /dev/null; do sleep 1; done && echo ''Server is ready''\")",
-      "Bash(tree -L 3 -I 'node_modules|.next')"
+      "Bash(tree -L 3 -I 'node_modules|.next')",
+      "Bash(dir /b src)",
+      "Bash(dir:*)",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []

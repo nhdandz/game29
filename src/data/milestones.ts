@@ -62,18 +62,17 @@ export const MILESTONES: Milestone[] = [
     day: 19,
     title: 'Mặt trận Việt Minh',
     description: 'Mặt trận Việt Nam Độc lập Đồng minh được thành lập',
-    gameType: 'image-match',
-    maxScore: 80,
+    gameType: 'wheel-fortune',
+    maxScore: 100,
     requiredScore: 60,
     timeLimit: null,
     icon: '🚩',
 
-    pairs: [
-      { id: 'p1', imageUrl: '👴', text: 'Hồ Chí Minh - Lãnh tụ Việt Minh' },
-      { id: 'p2', imageUrl: '🏔️', text: 'Căn cứ địa Việt Bắc' },
-      { id: 'p3', imageUrl: '⭐', text: 'Cờ đỏ sao vàng - Quốc kỳ' },
-      { id: 'p4', imageUrl: '📰', text: 'Báo Việt Nam Độc lập' }
-    ],
+    wheelFortune: {
+      phrase: 'VIỆT NAM ĐỘC LẬP ĐỒNG MINH',
+      category: 'Tên gọi tổ chức',
+      hint: 'Mặt trận dân tộc thống nhất do Hồ Chí Minh thành lập năm 1941'
+    },
 
     infoTitle: 'Mặt trận Việt Minh ra đời',
     infoText: 'Ngày 19/5/1941, Hội nghị Ban Chấp hành Trung ương Đảng lần thứ 8 họp tại Pác Bó, Cao Bằng đã quyết định thành lập Mặt trận Việt Nam Độc lập Đồng minh (Việt Minh). Đây là mặt trận dân tộc thống nhất rộng rãi nhất, đoàn kết tất cả các tầng lớp nhân dân, các dân tộc, tôn giáo để đấu tranh giành độc lập dân tộc. Việt Minh đã trở thành lực lượng chính trị - quân sự hùng mạnh, lãnh đạo nhân dân ta giành thắng lợi trong Cách mạng Tháng Tám 1945.',
@@ -168,6 +167,89 @@ export const MILESTONES: Milestone[] = [
     infoText: 'Ngày 2/9/1945, tại Quảng trường Ba Đình, Hà Nội, trước hàng vạn đồng bào từ mọi miền đất nước đổ về, Chủ tịch Hồ Chí Minh đã long trọng đọc Tuyên ngôn Độc lập, khai sinh ra nước Việt Nam Dân chủ Cộng hòa - Nhà nước công nông đầu tiên ở Đông Nam Á. Tuyên ngôn khẳng định: "Nước Việt Nam có quyền hưởng tự do và độc lập, và sự thật đã thành một nước tự do và độc lập". Đây là ngày lễ trọng đại nhất của dân tộc Việt Nam, đánh dấu chủ quyền, độc lập và toàn vẹn lãnh thổ của đất nước.',
     infoImage: '/images/1945-9-independence.jpg',
     backgroundImage: '/backgrounds/1945-9-independence.jpg'
+  },
+
+  // Màn 6: 1954 - Chiến thắng Điện Biên Phủ
+  {
+    id: '1954',
+    year: 1954,
+    month: 5,
+    day: 7,
+    title: 'Điện Biên Phủ',
+    description: 'Chiến thắng lịch sử Điện Biên Phủ',
+    gameType: 'image-quiz',
+    maxScore: 100,
+    requiredScore: 60,
+    timeLimit: null,
+    icon: '🏔️',
+
+    imageQuiz: [
+      {
+        imageUrl: '/images/dien-bien-phu-battle.jpg',
+        question: 'Hình ảnh này mô tả sự kiện gì trong lịch sử Việt Nam?',
+        options: [
+          'Chiến dịch Biên giới Thu - Đông 1950',
+          'Chiến thắng Điện Biên Phủ 1954',
+          'Giải phóng Sài Gòn 1975',
+          'Cách mạng Tháng Tám 1945'
+        ],
+        correctAnswer: 1,
+        explanation: 'Chiến thắng Điện Biên Phủ ngày 7/5/1954 là chiến thắng lịch sử "lừng lẫy năm châu, ch진động địa cầu", đánh dấu sự sụp đổ của chủ nghĩa thực dân cũ trên thế giới.'
+      },
+      {
+        imageUrl: '/images/vo-nguyen-giap.jpg',
+        question: 'Ai là Tổng Tư lệnh lãnh đạo chiến dịch Điện Biên Phủ?',
+        options: [
+          'Chủ tịch Hồ Chí Minh',
+          'Đại tướng Võ Nguyên Giáp',
+          'Tướng Hoàng Văn Thái',
+          'Tướng Nguyễn Chí Thanh'
+        ],
+        correctAnswer: 1,
+        explanation: 'Đại tướng Võ Nguyên Giáp là Tổng Tư lệnh, người trực tiếp chỉ huy chiến dịch Điện Biên Phủ lịch sử.'
+      },
+      {
+        imageUrl: '/images/dien-bien-artillery.jpg',
+        question: 'Hình ảnh này cho thấy vũ khí gì được sử dụng trong chiến dịch?',
+        options: [
+          'Xe tăng và thiết giáp',
+          'Pháo binh được kéo lên núi',
+          'Máy bay chiến đấu',
+          'Tàu chiến trên sông'
+        ],
+        correctAnswer: 1,
+        explanation: 'Quân ta đã khắc phục địa hình hiểm trở, kéo pháo lên núi một cách kỳ công, tạo nên sức mạnh quyết định cho chiến thắng.'
+      },
+      {
+        imageUrl: '/images/de-castries-surrender.jpg',
+        question: 'Sự kiện nào được thể hiện trong hình ảnh này?',
+        options: [
+          'Quân Pháp đầu hàng tại Điện Biên Phủ',
+          'Ký kết Hiệp định Geneva',
+          'Giải phóng Hà Nội',
+          'Cuộc họp Bộ chính trị'
+        ],
+        correctAnswer: 0,
+        explanation: 'Ngày 7/5/1954, Đại tá De Castries, tư lệnh pháp đồn Điện Biên Phủ đã phải đầu hàng quân ta, kết thúc 56 ngày đêm chiến đấu anh dũng.'
+      },
+      {
+        imageUrl: '/images/geneva-conference.jpg',
+        question: 'Chiến thắng Điện Biên Phủ dẫn đến sự kiện nào sau đây?',
+        options: [
+          'Thành lập Mặt trận Việt Minh',
+          'Cách mạng Tháng Tám thành công',
+          'Ký kết Hiệp định Geneva về Đông Dương',
+          'Thống nhất đất nước'
+        ],
+        correctAnswer: 2,
+        explanation: 'Chiến thắng Điện Biên Phủ buộc Pháp phải ký Hiệp định Geneva (21/7/1954), công nhận độc lập, chủ quyền, thống nhất và toàn vẹn lãnh thổ của ba nước Đông Dương.'
+      }
+    ],
+
+    infoTitle: 'Chiến thắng Điện Biên Phủ - "Lừng lẫy năm châu, chấn động địa cầu"',
+    infoText: 'Sau 56 ngày đêm chiến đấu anh dũng (13/3 - 7/5/1954), quân và dân ta đã giành thắng lợi vĩ đại tại Điện Biên Phủ. Chiến thắng này đánh dấu bước ngoặt lịch sử, buộc Pháp phải ký Hiệp định Geneva công nhận độc lập, chủ quyền của Việt Nam. Đây là chiến thắng của ý chí quyết chiến, quyết thắng, của sự sáng tạo trong nghệ thuật quân sự, là "điểm son chói lọi" trong lịch sử đấu tranh giải phóng dân tộc.',
+    infoImage: '/images/1954-dien-bien-phu.jpg',
+    backgroundImage: '/backgrounds/1954-dien-bien-phu.jpg'
   }
 ];
 

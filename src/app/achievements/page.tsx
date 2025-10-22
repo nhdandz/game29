@@ -22,14 +22,15 @@ export default function AchievementsPage() {
 
   if (!gameState) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center">
+      <div className="h-screen w-screen overflow-hidden bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center">
         <div className="text-white text-xl">Đang tải...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-600 via-yellow-500 to-red-700 py-8 px-4">
+    <div className="h-screen w-screen overflow-hidden bg-gradient-to-br from-red-600 via-yellow-500 to-red-700 flex flex-col">
+      <div className="flex-1 overflow-y-auto py-4 md:py-8 px-4">
       <div className="max-w-3xl mx-auto space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
@@ -143,6 +144,7 @@ export default function AchievementsPage() {
             </p>
           </div>
         )}
+      </div>
       </div>
     </div>
   );

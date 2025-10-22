@@ -24,13 +24,13 @@ export default function Home() {
 
   if (showSplash) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-red-600 via-yellow-500 to-red-700 flex items-center justify-center animate-fade-in">
+      <div className="h-screen w-screen overflow-hidden bg-gradient-to-br from-red-600 via-yellow-500 to-red-700 flex items-center justify-center animate-fade-in">
         <div className="text-center animate-pulse">
-          <div className="text-8xl mb-6 animate-bounce">🇻🇳</div>
-          <h1 className="text-4xl md:text-5xl font-bold text-white drop-shadow-lg mb-4">
+          <div className="text-6xl md:text-8xl mb-6 animate-bounce">🇻🇳</div>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-lg mb-4 px-4">
             HÀNH TRÌNH ĐỘC LẬP
           </h1>
-          <p className="text-xl text-white/90">Khám phá lịch sử Việt Nam 1930-1945</p>
+          <p className="text-lg md:text-xl text-white/90 px-4">Khám phá lịch sử Việt Nam 1930-1945</p>
         </div>
       </div>
     );
@@ -38,7 +38,7 @@ export default function Home() {
 
   if (!gameState) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center">
+      <div className="h-screen w-screen overflow-hidden bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center">
         <div className="text-white text-xl">Đang tải...</div>
       </div>
     );
@@ -48,7 +48,7 @@ export default function Home() {
   const isCompleted = gameState.completedMilestones.length === 5;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-600 via-yellow-500 to-red-700 flex items-center justify-center p-4">
+    <div className="h-screen w-screen overflow-hidden bg-gradient-to-br from-red-600 via-yellow-500 to-red-700 flex items-center justify-center p-4">
       <div className="max-w-md w-full bg-white/95 backdrop-blur rounded-3xl shadow-2xl p-8 space-y-6 animate-fade-in">
         {/* Logo and Title */}
         <div className="text-center space-y-4">
@@ -73,7 +73,7 @@ export default function Home() {
             <div className="flex justify-between text-sm">
               <span className="font-medium text-gray-700">Tổng điểm:</span>
               <span className="font-bold text-yellow-700">
-                {gameState.totalScore}/550
+                {gameState.totalScore}/570
               </span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2 mt-2">

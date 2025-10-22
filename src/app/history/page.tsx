@@ -5,7 +5,8 @@ import { MILESTONES } from '@/data/milestones';
 
 export default function HistoryPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-600 via-yellow-500 to-red-700 py-8 px-4">
+    <div className="h-screen w-screen overflow-hidden bg-gradient-to-br from-red-600 via-yellow-500 to-red-700 flex flex-col">
+      <div className="flex-1 overflow-y-auto py-4 md:py-8 px-4">
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
@@ -78,6 +79,7 @@ export default function HistoryPage() {
                   {milestone.gameType === 'timeline-sort' && 'Sắp xếp timeline'}
                   {milestone.gameType === 'memory' && 'Lật bài'}
                   {milestone.gameType === 'fill-blank' && 'Điền chỗ trống'}
+                  {milestone.gameType === 'wheel-fortune' && 'Chiếc nón kỳ diệu'}
                 </span>
                 <span className="bg-yellow-100 text-yellow-700 text-xs px-3 py-1 rounded-full font-medium">
                   ⭐ {milestone.maxScore} điểm
@@ -105,6 +107,7 @@ export default function HistoryPage() {
             </Link>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

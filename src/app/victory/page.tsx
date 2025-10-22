@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { loadGameState, getAchievementInfo, resetGameState } from '@/lib/gameStorage';
+import { loadGameState, getAchievementInfo, clearGameState } from '@/lib/gameStorage';
 import type { GameState } from '@/types/game';
 
 export default function VictoryPage() {
@@ -18,26 +18,28 @@ export default function VictoryPage() {
   }, []);
 
   const handlePlayAgain = () => {
-    if (confirm('Bạn có chắc muốn chơi lại từ đầu? Điểm số hiện tại sẽ bị xóa.')) {
-      resetGameState();
+    if (confirm('Bạn có chắc muốn chơi lại từ đầu? Mọi tiến độ sẽ bị xóa.')) {
+      clearGameState();
       window.location.href = '/';
     }
   };
 
   if (!gameState) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center">
+      <div className="h-screen w-screen overflow-hidden bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center">
         <div className="text-white text-xl">Đang tải...</div>
       </div>
     );
   }
 
-  const isPerfectScore = gameState.totalScore === 550;
+  const isPerfectScore = gameState.totalScore === 570;
   const isSpeedRunner = gameState.totalPlayTime < 1800;
   const avgScore = Math.round(gameState.totalScore / 5);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-600 via-yellow-500 to-red-700 py-8 px-4 relative overflow-hidden">
+    <div className="h-screen w-screen overflow-hidden bg-gradient-to-br from-red-600 via-yellow-500 to-red-700 relative flex flex-col">
+      {/* Scrollable Content */}
+      <div className="flex-1 overflow-y-auto py-4 md:py-8 px-4">
       {/* Confetti Effect */}
       {showConfetti && (
         <div className="absolute inset-0 pointer-events-none">
@@ -75,7 +77,7 @@ export default function VictoryPage() {
             <div className="text-6xl font-bold text-white mb-2">
               {gameState.totalScore}
             </div>
-            <div className="text-2xl text-white/90">/ 550 điểm</div>
+            <div className="text-2xl text-white/90">/ 570 điểm</div>
             {isPerfectScore && (
               <div className="mt-4 text-xl font-bold text-white animate-pulse">
                 💯 ĐIỂM TUYỆT ĐỐI!
@@ -110,7 +112,7 @@ export default function VictoryPage() {
           <div className="space-y-3">
             {[
               { id: '1930', title: '1930 - Thành lập Đảng', icon: '🏛️', max: 100 },
-              { id: '1940', title: '1940 - Mặt trận Việt Minh', icon: '🚩', max: 80 },
+              { id: '1940', title: '1940 - Mặt trận Việt Minh', icon: '🚩', max: 100 },
               { id: '1941', title: '1941 - Bác Hồ về nước', icon: '🇻🇳', max: 100 },
               { id: '1945-8', title: 'Tháng 8/1945 - Tổng khởi nghĩa', icon: '⚔️', max: 120 },
               { id: '1945-9', title: 'Ngày 2/9/1945 - Tuyên ngôn Độc lập', icon: '📜', max: 150 }
@@ -185,6 +187,7 @@ export default function VictoryPage() {
             🔄 Chơi lại
           </button>
         </div>
+      </div>
       </div>
     </div>
   );
